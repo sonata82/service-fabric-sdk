@@ -8,8 +8,10 @@ RUN apt-get update && \
 # add Service Fabric and dotnet repo to apt
 RUN echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ trusty main" > /etc/apt/sources.list.d/servicefabric.list && \
     echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list && \
+    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" > /etc/apt/sources.list.d/docker.list && \
     apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893 && \
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893 && \
+    apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net --recv-keys 7EA0A9C3F273FCD8
 
 # update sources
 RUN apt-get -y update
